@@ -6,13 +6,13 @@ export class MainStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
-    const lambdaFunc = new lambda.Function(
+    // NodejsFunctionコンストラクタはTypeScriptで実装したLambda関数を簡単にビルド・デプロイしてくれる
+    const lambdaFunc = new cdk.aws_lambda_nodejs.NodejsFunction(
       this,
       "lambdaFunc",
       {
         runtime: lambda.Runtime.NODEJS_16_X,
-        code: lambda.Code.fromAsset('lambda'),
-        handler: "src/helloworld.handler",
+        entry: "lambda/src/index.ts",
       }
     );
   }
