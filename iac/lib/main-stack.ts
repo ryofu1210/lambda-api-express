@@ -9,7 +9,7 @@ export class MainStack extends cdk.Stack {
     // JavaScriptで実装したLambda関数をデプロイ
     new lambda.Function(
       this,
-      "lambdaFunc",
+      "JavaScriptHelloWorldLambdaFn",
       {
         runtime: lambda.Runtime.NODEJS_16_X,
         code: lambda.Code.fromAsset('lambda'),
@@ -20,7 +20,7 @@ export class MainStack extends cdk.Stack {
     // NodejsFunctionコンストラクタはTypeScriptで実装したLambda関数を簡単にビルド・デプロイしてくれる
     new cdk.aws_lambda_nodejs.NodejsFunction(
       this,
-      "lambdaFunc",
+      "TypeScriptHelloWorldLambdaFn",
       {
         runtime: lambda.Runtime.NODEJS_16_X,
         entry: "lambda/src/index.ts",
